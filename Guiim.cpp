@@ -4,6 +4,8 @@
 #include "settings.h"
 #include "fileio.h"
 #include "Menu.h"
+#include "loader.h"
+#include "sql.h"
 #include <GL/glew.h>
 #include <iostream>
 #include <vector>
@@ -19,6 +21,8 @@ int main(int, char**)
     
     if (!glfwInit())
         return 1;
+
+    
 
     const char* glsl_version = "#version 130";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -79,7 +83,7 @@ int main(int, char**)
             mn.Theme(style);
             
             //Starting the window
-            ImGui::Begin(" ", 0 , ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoResize);                          // Create a window called "Hello, world!" and append into it.
+            ImGui::Begin(" ", 0 , ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse );                          // Create a window called "Hello, world!" and append into it.
             ImGui::SetWindowSize(size);
             //Rendering the components
             mn.Render(style , resources , new_content);
@@ -111,3 +115,4 @@ int main(int, char**)
 
     return 0;
 }
+
